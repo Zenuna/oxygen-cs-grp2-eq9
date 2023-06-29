@@ -57,7 +57,7 @@ class Main:
             print(data[0]["date"] + " --> " + data[0]["data"])
             date = data[0]["date"]
             dp = float(data[0]["data"])
-            self.send_temperature_to_fastapi(date, dp)
+            self.send_event_to_database(date, dp)
             self.analyzeDatapoint(date, dp)
         except Exception as err:
             print(err)

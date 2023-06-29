@@ -1,13 +1,12 @@
 # syntax=docker/dockerfile:1
-FROM python:3.8-slim-buster
+FROM python:3.8-alpine
 
 WORKDIR /app
-RUN pip install pipenv
 
-COPY ./Pipfile /app
-COPY ./Pipfile.lock /app
-RUN pipenv install
+COPY Pipfile Pipfile.lock ./
 
-COPY . ./
+RUN pip install pipenv && pipenv install
 
-CMD ["pipenv", "run", "python", "./src/main.py"]
+COPY ./src ./src
+
+CMD ["pipenv", "run", "python", "-u", "./src/main.py"]
