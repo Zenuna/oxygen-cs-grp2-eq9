@@ -11,11 +11,6 @@ env:
   T_MIN: "100"
   DATABASE: "DBENV"
 runs:
-  runs-on: ubuntu-latest
-  strategy:
-    fail-fast: false
-    matrix:
-      python-version: ["3.8"]
   using: "composite"
   steps:
   - uses: actions/checkout@v3
