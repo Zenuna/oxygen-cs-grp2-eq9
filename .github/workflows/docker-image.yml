@@ -9,7 +9,7 @@ on:
 env:
   USERNAME: ${{secrets.DOCKER_USERNAME}}
   PASSWORD: ${{secrets.DOCKER_PWD}}
-
+  TIMESTAMP: $(date + %Y%m%d%H%M%s)
 jobs:
 
   build:
@@ -21,8 +21,8 @@ jobs:
     - name : Connexion docker
       run: docker login -u $USERNAME -p $PASSWORD
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag $(Build.BuildId)
+      run: docker build . --file Dockerfile --tag $TIMESTAMP
     - name: Tag Image
-      run : docker tag $(Build.BuildId) $USERNAME/oxygen-cs-grp2-eq9:$(Build.BuildId)
+      run : docker tag $TIMESTAMP $USERNAME/oxygen-cs-grp2-eq9:$TIMESTAMP$TIMESTAMP
     - name: Push the image
-      run: docker push $USERNAME/oxygen-cs-grp2-eq9:$(Build.BuildId)
+      run: docker push $USERNAME/oxygen-cs-grp2-eq9:$TIMESTAMP
