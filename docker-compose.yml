@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  web:
+    build: .
+    environment:
+      HOST: http://34.95.34.5
+      TOKEN: Um9aQilWFM
+      TICKETS: 1
+      T_MAX: 50
+      T_MIN: 20
+      DATABASE: sqlite:///C:\\dblabo.dbsqlite:///C:\\dblabo.db

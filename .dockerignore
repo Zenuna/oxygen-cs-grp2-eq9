@@ -1,0 +1,21 @@
+# Git
+.git
+.gitignore
+
+# Docker
+docker-compose.yml
+
+# Test
+test
+
+# PyCharm
+.idea
+
+# Commit
+.pre-commit-config.yaml
+
+# Doc
+doc
+LICENSE
+pull_request_template.md
+README.md
