@@ -7,11 +7,15 @@ runs:
   steps:
   - uses: actions/checkout@v3
   - name : Connexion docker
+    shell: bash
     run: docker login -u $USERNAME -p $PASSWORD
   - name : Creation tag temps
     id : date
+    shell: bash
     run: echo "DATE=$(date +%Y%m%d%H%M%s)" >> $GITHUB_ENV
   - name: Build the Docker image
+    shell: bash
     run: docker build . --file Dockerfile --tag $USERNAME/oxygen-cs-grp2-eq9:$DATE --tag $USERNAME/oxygen-cs-grp2-eq9:latest
   - name: Push the image
+    shell: bash
     run: docker push $USERNAME/oxygen-cs-grp2-eq9 --all-tags
