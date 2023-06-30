@@ -10,6 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/jobs/test
+      env:
+        HOST: "GITHUB"
+        TOKEN: "YES"
+        TICKETS: "100"
+        T_MAX: "100"
+        T_MIN: "100"
+        DATABASE: "DBENV"
 
   black:
     name: Black
