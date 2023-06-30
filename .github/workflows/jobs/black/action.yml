@@ -1,4 +1,3 @@
-name: 2. Code Formatting
 runs:
   using: "composite"
   steps:

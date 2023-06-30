@@ -32,3 +32,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/jobs/docker
+      env:
+        USERNAME: ${{secrets.DOCKER_USERNAME}}
+        PASSWORD: ${{secrets.DOCKER_PWD}}

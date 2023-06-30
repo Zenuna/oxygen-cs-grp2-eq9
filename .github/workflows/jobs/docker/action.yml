@@ -1,7 +1,3 @@
-name: 3. Docker image
-env:
-  USERNAME: ${{secrets.DOCKER_USERNAME}}
-  PASSWORD: ${{secrets.DOCKER_PWD}}
 runs:
   using: "composite"
   steps:
