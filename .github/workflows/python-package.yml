@@ -16,7 +16,7 @@ env:
   T_MIN: "100"
   DATABASE: "DBENV"
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
     strategy:
