@@ -27,4 +27,4 @@ jobs:
     - name: Tag Image
       run : docker tag $DATE $USERNAME/oxygen-cs-grp2-eq9:$DATE
     - name: Push the image
-      run: docker push $USERNAME/oxygen-cs-grp2-eq9:DATE
+      run: docker push $USERNAME/oxygen-cs-grp2-eq9:$DATE
