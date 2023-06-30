@@ -23,8 +23,6 @@ jobs:
       id : date
       run: echo "DATE=$(date +%Y%m%d%H%M%s)" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag $DATE
-    - name: Tag Image
-      run : docker tag $DATE $USERNAME/oxygen-cs-grp2-eq9:$DATE
+      run: docker build . --file Dockerfile --tag $USERNAME/oxygen-cs-grp2-eq9$USERNAME/oxygen-cs-grp2-eq9:$DATE --tag $USERNAME/oxygen-cs-grp2-eq9:latest
     - name: Push the image
-      run: docker push $USERNAME/oxygen-cs-grp2-eq9:$DATE
+      run: docker push $USERNAME/oxygen-cs-grp2-eq9 --all tags
