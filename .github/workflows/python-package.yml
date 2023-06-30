@@ -37,5 +37,6 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pipenv
+        pip install signalrcore
         pipenv install
         pipenv run pytest ./test/test.py
