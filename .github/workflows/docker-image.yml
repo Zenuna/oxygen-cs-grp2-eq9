@@ -23,6 +23,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag latest
     - name: Tag Image
-      run : docker tag oxygen-cs-grp2-eq9 $USERNAME/oxygen-cs-grp2-eq9:latest
+      run : docker tag latest $USERNAME/oxygen-cs-grp2-eq9:latest
     - name: Push the image
       run: docker push $USERNAME/oxygen-cs-grp2-eq9:latest
