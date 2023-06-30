@@ -9,4 +9,4 @@ services:
       TICKETS: 1
       T_MAX: 50
       T_MIN: 20
-      DATABASE: sqlite:///C:\\dblabo.dbsqlite:///C:\\dblabo.db
+      DATABASE: sqlite:///C:\\dblabo.db
