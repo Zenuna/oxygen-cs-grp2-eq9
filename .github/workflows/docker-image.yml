@@ -19,9 +19,12 @@ jobs:
     - uses: actions/checkout@v3
     - name : Connexion docker
       run: docker login -u $USERNAME -p $PASSWORD
+    - name : Creation tag temps
+      id : date
+      run: echo "DATE=$(date +%Y%m%d%H%M%s)" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag $(date +%Y%m%d%H%M%s)
+      run: docker build . --file Dockerfile --tag $DATE
     - name: Tag Image
-      run : docker tag $(date +%Y%m%d%H%M%s) $USERNAME/oxygen-cs-grp2-eq9:$(date +%Y%m%d%H%M%s)
+      run : docker tag $DATE $USERNAME/oxygen-cs-grp2-eq9:$DATE
     - name: Push the image
-      run: docker push $USERNAME/oxygen-cs-grp2-eq9:$TIMESTAMP
+      run: docker push $USERNAME/oxygen-cs-grp2-eq9:DATE
