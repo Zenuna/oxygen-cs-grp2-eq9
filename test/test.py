@@ -21,9 +21,9 @@ class MainTesting(TestCase):
     def test_env_set_value(self):
         assert self.app.Main.HOST == 'GITHUB'
         assert self.app.Main.TOKEN == 'YES'
-        assert self.app.Main.TICKETS == 100
-        assert self.app.Main.T_MAX == 100
-        assert self.app.Main.T_MIN == 100
+        assert self.app.Main.TICKETS == "100"
+        assert self.app.Main.T_MAX == "100"
+        assert self.app.Main.T_MIN == "100"
         assert self.app.Main.DATABASE == 'DBENV'
 
 
