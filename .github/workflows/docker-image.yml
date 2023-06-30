@@ -21,6 +21,6 @@ jobs:
     - name : Connexion docker
       run: docker login -u $USERNAME -p $PASSWORD
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag latest
+      run: docker build . --file Dockerfile --tag latest/latest
     - name: Push the image
       run: docker push $USERNAME/oxygen-cs-grp2-eq9
