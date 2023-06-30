@@ -3,6 +3,7 @@ from unittest import TestCase, mock
 import unittest
 from src import main
 
+
 # TEST COMMENT
 class MainTesting(TestCase):
     def setUp(self):
