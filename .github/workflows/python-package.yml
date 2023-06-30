@@ -9,7 +9,12 @@ on:
   pull_request:
     branches: [ "main" ]
 env:
+  HOST: "GITHUB"
   TOKEN: "YES"
+  TICKETS: "100"
+  T_MAX: "100"
+  T_MIN: "100"
+  DATABASE: "DBENV"
 jobs:
   build:
 
