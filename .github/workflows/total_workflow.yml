@@ -5,24 +5,23 @@ on:
     branches: [ "main" ]
 jobs:
   test:
-    name: Runner
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/jobs/test
-  black:
-    name: Runner
-    runs-on: ubuntu-latest
 
+  black:
+    name: Black
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/jobs/black
 
   build:
     needs: [test, black]
-    name: Runner
+    name: Publish
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/jobs/docker
