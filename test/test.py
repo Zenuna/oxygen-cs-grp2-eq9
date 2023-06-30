@@ -26,6 +26,5 @@ class MainTesting(TestCase):
         assert self.app.Main.T_MIN == "100"
         assert self.app.Main.DATABASE == 'DBENV'
 
-
 if __name__ == '__main__':
     unittest.main()
