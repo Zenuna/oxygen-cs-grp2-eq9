@@ -12,7 +12,6 @@ env:
 jobs:
 
   build:
-    needs: [test, lint]
     runs-on: ubuntu-latest
 
     steps:

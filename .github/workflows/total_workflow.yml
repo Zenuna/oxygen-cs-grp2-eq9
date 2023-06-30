@@ -1,0 +1,30 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  test:
+    name: Runner
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ./.github/workflows/jobs/python-package.yml
+
+  black:
+    name: Runner
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ./.github/workflows/jobs/black.yml
+
+  build:
+    needs: [test, black]
+    name: Runner
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ./.github/workflows/jobs/docker-image.yml
