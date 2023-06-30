@@ -10,8 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/jobs/test
-      with:
-        python-version: "3.8"
 
   black:
     name: Black
