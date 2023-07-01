@@ -19,6 +19,7 @@ jobs:
         DATABASE: "DBENV"
 
   black:
+    needs: [test]
     name: Black
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +27,7 @@ jobs:
     - uses: ./.github/workflows/jobs/black
 
   build:
-    needs: [test, black]
+    needs: [test]
     name: Publish
     runs-on: ubuntu-latest
     steps:

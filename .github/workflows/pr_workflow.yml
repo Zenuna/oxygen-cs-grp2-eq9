@@ -16,8 +16,8 @@ jobs:
         T_MAX: "100"
         T_MIN: "100"
         DATABASE: "DBENV"
-
   black:
+    needs: [test]
     name: Black
     runs-on: ubuntu-latest
     steps:
