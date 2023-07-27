@@ -7,6 +7,6 @@ services:
       HOST: http://34.95.34.5
       TOKEN: Um9aQilWFM
       TICKETS: 1
-      T_MAX: 50
-      T_MIN: 20
+      T_MAX: 100
+      T_MIN: 0
       DATABASE: sqlite:///C:\\dblabo.db
