@@ -5,10 +5,9 @@ name = "pypi"
 
 [packages]
 requests = "*"
+sqlalchemy = "*"
 signalrcore = "*"
 pylint = "*"
-SQLAlchemy = "*"
-SQLAlchemy-Utils = "*"
 
 [dev-packages]
 
