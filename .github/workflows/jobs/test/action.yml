@@ -16,6 +16,9 @@ runs:
     run: |
       pip install pipenv
       pip install signalrcore
+      pip install sqlalchemy
+      pip install pymysql
+      pip install mysql-connector-python
       pipenv install
       pipenv run pytest ./test/test.py
   - name: Lint with flake8

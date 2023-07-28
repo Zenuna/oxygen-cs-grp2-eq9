@@ -5,6 +5,9 @@ import json
 import time
 import os
 
+from database import init_db, engine, db_session
+from models import Oxygen
+
 
 class Main:
     def __init__(self):
