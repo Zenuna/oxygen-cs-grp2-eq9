@@ -28,6 +28,7 @@ class Main:
             self._hub_connection.stop()
 
     def setup(self):
+        make_db()
         self.setSensorHub()
 
     def start(self):
@@ -63,7 +64,7 @@ class Main:
 
     def onSensorDataReceived(self, data):
         try:
-            print(data[0]["date"] + " --> " + data[0]["data"])
+            # print(data[0]["date"] + " --> " + data[0]["data"])
             date = data[0]["date"]
             dp = float(data[0]["data"])
             self.send_event_to_database(date, dp)
@@ -80,15 +81,25 @@ class Main:
     def sendActionToHvac(self, date, action, nbTick):
         r = requests.get(f"{self.HOST}/api/hvac/{self.TOKEN}/{action}/{nbTick}")
         details = json.loads(r.text)
-        print(details)
+        # print(details)
 
     def send_event_to_database(self, timestamp, event):
         try:
+            print(timestamp)
+            print(event)
+            db_session.add(Oxygen(timestamp=timestamp, temp=event))
+            db_session.commit()
             # To implement
             pass
         except requests.exceptions.RequestException as e:
             # To implement
             pass
+
+
+def make_db():
+    print("creating the database...")
+    init_db()
+    con = engine.connect()
 
 
 if __name__ == "__main__":

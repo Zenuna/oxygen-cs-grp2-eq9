@@ -2,6 +2,10 @@ import os
 from unittest import TestCase, mock
 import unittest
 from src import main
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+from src.database import Base
 
 
 # TEST COMMENT
