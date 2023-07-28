@@ -34,12 +34,12 @@ class MainTesting(TestCase):
         assert os.getenv("DATABASE") == "DB"
 
     def test_env_set_value(self):
-        assert self.app.Main.HOST == "http://34.95.34.5"
-        assert self.app.Main.TOKEN == "Um9aQilWFM"
-        assert self.app.Main.TICKETS == 1
-        assert self.app.Main.T_MAX == 100
-        assert self.app.Main.T_MIN == 0
-        assert self.app.Main.DATABASE == "sqlite:///C:\\dblabo.db"
+        assert self.app.Main.HOST == "GITHUB"
+        assert self.app.Main.TOKEN == "YES"
+        assert self.app.Main.TICKETS == "100"
+        assert self.app.Main.T_MAX == "100"
+        assert self.app.Main.T_MIN == "100"
+        assert self.app.Main.DATABASE == "DBENV"
 
 
 if __name__ == "__main__":
