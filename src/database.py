@@ -3,11 +3,11 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 # Linux
-engine = create_engine("sqlite:////tmp/dblabo5.db")
+# engine = create_engine("sqlite:////tmp/dblabo5.db")
 # Windows
-# engine = create_engine(
-#     "mysql+pymysql://root:mysecretpassword@my-mysql-container:3306/mydatabase"
-# )
+engine = create_engine(
+    "mysql+pymysql://root:mysecretpassword@10.28.5.13:3306/mydatabase"
+)
 db_session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine)
 )
