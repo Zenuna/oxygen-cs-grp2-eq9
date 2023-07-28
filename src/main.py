@@ -1,9 +1,10 @@
-from signalrcore.hub_connection_builder import HubConnectionBuilder
-import logging
-import requests
 import json
-import time
+import logging
 import os
+import time
+
+import requests
+from signalrcore.hub_connection_builder import HubConnectionBuilder
 
 from database import init_db, engine, db_session
 from models import Oxygen
