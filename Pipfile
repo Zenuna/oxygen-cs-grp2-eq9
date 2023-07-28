@@ -8,6 +8,8 @@ requests = "*"
 sqlalchemy = "*"
 signalrcore = "*"
 pylint = "*"
+pymysql = "*"
+mysql-connector-python = "*"
 
 [dev-packages]
 
