@@ -8,12 +8,13 @@ from sqlalchemy import (
 from datetime import datetime
 
 
-class Oxygen(Base):
-    __tablename__ = "oxygen"
+class OxygenData(Base):
+    __tablename__ = "OxygenData"
     __table_args__ = {"extend_existing": True}
     id = Column(Integer(), primary_key=True)
     timestamp = Column(String(255))
     temp = Column(Double())
+    message = Column(String(255))
 
     def to_json(self):
         return {
@@ -21,4 +22,5 @@ class Oxygen(Base):
             if isinstance(self.timestamp, datetime)
             else None,
             "temp": self.temp,
+            "message": self.message,
         }

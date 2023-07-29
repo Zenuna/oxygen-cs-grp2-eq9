@@ -7,7 +7,7 @@ import requests
 from signalrcore.hub_connection_builder import HubConnectionBuilder
 
 from database import init_db, engine, db_session
-from models import Oxygen
+from models import OxygenData
 
 
 class Main:
@@ -16,8 +16,8 @@ class Main:
         self.HOST = os.getenv("HOST", "http://34.95.34.5")  # Setup your host here
         self.TOKEN = os.getenv("TOKEN")  # Setup your token here
         self.TICKETS = os.getenv("TICKETS", 1)  # Setup your tickets here
-        self.T_MAX = os.getenv("T_MAX", 100)  # Setup your max temperature here
-        self.T_MIN = os.getenv("T_MIN", 0)  # Setup your min temperature here
+        self.T_MAX = os.getenv("T_MAX", 30)  # Setup your max temperature here
+        self.T_MIN = os.getenv("T_MIN", 20)  # Setup your min temperature here
         self.DATABASE = os.getenv(
             "DATABASE", "sqlite:///C:\\dblabo.db"
         )  # Setup your database here
@@ -68,27 +68,29 @@ class Main:
             # print(data[0]["date"] + " --> " + data[0]["data"])
             date = data[0]["date"]
             dp = float(data[0]["data"])
-            self.send_event_to_database(date, dp)
-            self.analyzeDatapoint(date, dp)
+            action = self.analyzeDatapoint(date, dp)
+            self.send_event_to_database(date, dp, action)
         except Exception as err:
             print(err)
 
     def analyzeDatapoint(self, date, data):
         if float(data) >= float(self.T_MAX):
-            self.sendActionToHvac(date, "TurnOnAc", self.TICKETS)
+            return self.sendActionToHvac(date, "TurnOnAc", self.TICKETS)
         elif float(data) <= float(self.T_MIN):
-            self.sendActionToHvac(date, "TurnOnHeater", self.TICKETS)
+            return self.sendActionToHvac(date, "TurnOnHeater", self.TICKETS)
+        return ""
 
     def sendActionToHvac(self, date, action, nbTick):
         r = requests.get(f"{self.HOST}/api/hvac/{self.TOKEN}/{action}/{nbTick}")
         details = json.loads(r.text)
-        # print(details)
+        return details["Response"]
 
-    def send_event_to_database(self, timestamp, event):
+    def send_event_to_database(self, timestamp, event, action):
         try:
             print(timestamp)
             print(event)
-            db_session.add(Oxygen(timestamp=timestamp, temp=event))
+            print(action)
+            db_session.add(OxygenData(timestamp=timestamp, temp=event, message=action))
             db_session.commit()
             # To implement
             pass
